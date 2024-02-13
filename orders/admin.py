@@ -17,7 +17,7 @@ class OrderItemTabulareAdmin(admin.TabularInline):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(admin.ModelAdmin):
-    list_display = "order", "product", "name", "price", "quantity"
+    list_display = "order", "product", "name", "price", "quantity", "total_price"
     search_fields = (
         "order",
         "product",
@@ -28,17 +28,12 @@ class OrderItemAdmin(admin.ModelAdmin):
 class OrderTabulareAdmin(admin.TabularInline):
     model = Order
     fields = (
-        "requires_delivery",
-        "status",
-        "payment_on_get",
-        "is_paid",
         "created_timestamp",
+        "total_price",
     )
 
     search_fields = (
-        "requires_delivery",
-        "payment_on_get",
-        "is_paid",
+        "user",
         "created_timestamp",
     )
     readonly_fields = ("created_timestamp",)
@@ -50,21 +45,18 @@ class OrderAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "user",
-        "requires_delivery",
-        "status",
-        "payment_on_get",
-        "is_paid",
         "created_timestamp",
+        "total_price"
     )
+
 
     search_fields = (
         "id",
     )
     readonly_fields = ("created_timestamp",)
     list_filter = (
-        "requires_delivery",
-        "status",
-        "payment_on_get",
-        "is_paid",
+        
+        "created_timestamp",
+        "user"
     )
     inlines = (OrderItemTabulareAdmin,)

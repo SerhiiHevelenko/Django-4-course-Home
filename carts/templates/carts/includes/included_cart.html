@@ -47,12 +47,12 @@
 </div>
 <div class="card mb-3 shadow-lg">
     <div class="card-footer">
-        <p class="float-left">Итого <strong>{{ carts.total_quantity }}</strong> товар(а) на сумму</p>
-        <h4 class="float-left"><strong>{{ carts.total_price }} $</strong></h4>
+        <p class="float-left">Разом <strong>{{ carts.total_quantity }}</strong> товар(ів) на суму</p>
+        <h4 class="float-left"><strong>{{ carts.total_price }} грн</strong></h4>
     </div>
 </div>
 {% if carts and not orders%}
 <a class="btn btn-dark" href="{% url "orders:create_order" %}">
-    Оформить заказ
+    Оформити замовлення
 </a>
 {% endif %}

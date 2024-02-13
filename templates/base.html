@@ -26,7 +26,7 @@
     <header>
         <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
             <div class="container">
-                <a class="navbar-brand" href="{% url "main:index" %}">Home</a>
+                <a class="navbar-brand" href="{% url "main:index" %}">ZamovHozky</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -37,11 +37,11 @@
                         <li class="nav-item dropdown ">
                             <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Информация
+                                Інформація
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item  text-white" href="#">Доставка и оплата</a></li>
-                                <li><a class="dropdown-item  text-white" href="#">Контактная информация</a></li>
+                                <li><a class="dropdown-item  text-white" href="#">Доставка та оплата</a></li>
+                                <li><a class="dropdown-item  text-white" href="#">Контактна інформация</a></li>
                                 <li><a class="dropdown-item  text-white" href="{% url "main:about" %}">Про нас</a></li>
                             </ul>
                         </li>
@@ -50,32 +50,32 @@
                         </li>
                         {% if not user.is_authenticated %}
                             <li class="nav-item">
-                                <a class="nav-link  text-white" href="{% url "user:login" %}">Войти</a>
+                                <a class="nav-link  text-white" href="{% url "user:login" %}">Війти</a>
                             </li>
                         {% else %}
                             <li class="nav-item dropdown ">
                                 <a class="nav-link dropdown-toggle text-white" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
-                                    Мой профиль
+                                    Мій профіль
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item  text-white" href="carts/cart.html">Корзина</a></li>
-                                    <li><a class="dropdown-item  text-white" href="{% url "user:profile" %}">Личный кабинет</a>
+                                    <li><a class="dropdown-item  text-white" href="{% url "user:profile" %}">Особистий кабінет</a>
                                     </li>
                                     {% if user.is_admin or user.is_staff %}
-                                        <li><a class="dropdown-item  text-white" href="{% url "admin:index" %}">Админ панель</a></li>
+                                        <li><a class="dropdown-item  text-white" href="{% url "admin:index" %}">Адмін панель</a></li>
                                     {% endif %}
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item  text-white" href="{% url "user:logout" %}">Выйти</a></li>
+                                    <li><a class="dropdown-item  text-white" href="{% url "user:logout" %}">Вийти</a></li>
                                 </ul>
                             </li>
                         {% endif %}
                     </ul>
                     <form class="d-flex" role="search" action="{% url "catalog:search" %}" method="get">
                         <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success text-white" type="submit">Поиск</button>
+                        <button class="btn btn-outline-success text-white" type="submit">Пошук</button>
                     </form>
                 </div>
             </div>

@@ -8,8 +8,8 @@ class User(AbstractUser):
 
     class Meta:
         db_table = 'user'
-        verbose_name = 'Пользователя'
-        verbose_name_plural = 'Пользователи'
+        verbose_name = 'Користувач'
+        verbose_name_plural = 'Користувачі'
 
     def __str__(self):
         return self.username

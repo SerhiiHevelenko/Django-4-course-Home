@@ -19,7 +19,7 @@ class CartAdmin(admin.ModelAdmin):
     def user_display(self, obj):
         if obj.user:
             return str(obj.user)
-        return "Анонимный пользователь"
+        return "Анонімний користувач"
 
     def product_display(self, obj):
         return str(obj.product.name)
