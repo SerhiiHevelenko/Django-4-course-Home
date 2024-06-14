@@ -22,7 +22,7 @@ def login(request):
 
             if user:
                 auth.login(request, user)
-                messages.success(request, f"{username}, Вы вошли в аккаунт")
+                messages.success(request, f"{username}, Ви ввійшли в акаунт")
 
                 if session_key:
                     Cart.objects.filter(session_key=session_key).update(user=user)
@@ -36,7 +36,7 @@ def login(request):
         form = UserLoginForm()
 
     context = {
-        'title': 'Home - Авторизация',
+        'title': 'Home - Авторизація',
         'form': form
     }
     return render(request, 'users/login.html', context)
@@ -55,13 +55,13 @@ def registration(request):
 
             if session_key:
                 Cart.objects.filter(session_key=session_key).update(user=user)
-            messages.success(request, f"{user.username}, Вы успешно зарегистрированы и вошли в аккаунт")
+            messages.success(request, f"{user.username}, Ви успішно зареєстровані та ввійшли в акаунт")
             return HttpResponseRedirect(reverse('main:index'))
     else:
         form = UserRegistrationForm()
     
     context = {
-        'title': 'Home - Регистрация',
+        'title': 'Home - Реєстрація',
         'form': form
     }
     return render(request, 'users/registration.html', context)
@@ -72,7 +72,7 @@ def profile(request):
         form = ProfileForm(data=request.POST, instance=request.user, files=request.FILES)
         if form.is_valid():
             form.save()
-            messages.success(request, "Профайл успешно обновлен")
+            messages.success(request, "Профайл успішно оновлено")
             return HttpResponseRedirect(reverse('user:profile'))
     else:
         form = ProfileForm(instance=request.user)
@@ -86,7 +86,7 @@ def profile(request):
         
 
     context = {
-        'title': 'Home - Кабинет',
+        'title': 'Hozka - Кабінет',
         'form': form,
         'orders': orders,
     }
@@ -98,6 +98,6 @@ def users_cart(request):
 
 @login_required
 def logout(request):
-    messages.success(request, f"{request.user.username}, Вы вышли из аккаунта")
+    messages.success(request, f"{request.user.username}, Ви вийшли з акаунту")
     auth.logout(request)
     return redirect(reverse('main:index'))

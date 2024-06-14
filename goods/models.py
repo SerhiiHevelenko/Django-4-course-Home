@@ -28,8 +28,8 @@ class Products(models.Model):
 
     class Meta:
         db_table = 'product'
-        verbose_name = 'Продукт'
-        verbose_name_plural = 'Продукти'
+        verbose_name = 'Товар'
+        verbose_name_plural = 'Товари'
         ordering = ("id",)
 
     def __str__(self):

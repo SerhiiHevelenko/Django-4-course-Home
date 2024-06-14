@@ -46,7 +46,7 @@ $(document).ready(function () {
             },
 
             error: function (data) {
-                console.log("Ошибка при добавлении товара в корзину");
+                console.log("Помилка при додаванні товару в корзину");
             },
         });
     });
@@ -97,17 +97,50 @@ $(document).ready(function () {
             },
 
             error: function (data) {
-                console.log("Ошибка при добавлении товара в корзину");
+                console.log("Помилка при додаванні товару в корзину");
             },
         });
     });
 
+    // // Теперь + - количества товара 
+    // // Обработчик события для уменьшения значения
+    // $(document).on("click", ".decrement", function () {
+    //     // Берем ссылку на контроллер django из атрибута data-cart-change-url
+    //     var url = $(this).data("cart-change-url");
+    //     // Берем id корзины из атрибута data-cart-id
+    //     var cartID = $(this).data("cart-id");
+    //     // Ищем ближайшеий input с количеством 
+    //     var $input = $(this).closest('.input-group').find('.number');
+    //     // Берем значение количества товара
+    //     var currentValue = parseInt($input.val());
+    //     // Если количества больше одного, то только тогда делаем -1
+    //     if (currentValue > 1) {
+    //         $input.val(currentValue - 1);
+    //         // Запускаем функцию определенную ниже
+    //         // с аргументами (id карты, новое количество, количество уменьшилось или прибавилось, url)
+    //         updateCart(cartID, currentValue - 1, -1, url);
+    //     }
+    // });
 
+    // // Обработчик события для увеличения значения
+    // $(document).on("click", ".increment", function () {
+    //     // Берем ссылку на контроллер django из атрибута data-cart-change-url
+    //     var url = $(this).data("cart-change-url");
+    //     // Берем id корзины из атрибута data-cart-id
+    //     var cartID = $(this).data("cart-id");
+    //     // Ищем ближайшеий input с количеством 
+    //     var $input = $(this).closest('.input-group').find('.number');
+    //     // Берем значение количества товара
+    //     var currentValue = parseInt($input.val());
 
+    //     $input.val(currentValue + 1);
 
-    // Теперь + - количества товара 
-    // Обработчик события для уменьшения значения
-    $(document).on("click", ".decrement", function () {
+    //     // Запускаем функцию определенную ниже
+    //     // с аргументами (id карты, новое количество, количество уменьшилось или прибавилось, url)
+    //     updateCart(cartID, currentValue + 1, 1, url);
+    // });
+     
+    $(document).on("change", ".number", function () {
         // Берем ссылку на контроллер django из атрибута data-cart-change-url
         var url = $(this).data("cart-change-url");
         // Берем id корзины из атрибута data-cart-id
@@ -116,33 +149,13 @@ $(document).ready(function () {
         var $input = $(this).closest('.input-group').find('.number');
         // Берем значение количества товара
         var currentValue = parseInt($input.val());
-        // Если количества больше одного, то только тогда делаем -1
-        if (currentValue > 1) {
-            $input.val(currentValue - 1);
-            // Запускаем функцию определенную ниже
-            // с аргументами (id карты, новое количество, количество уменьшилось или прибавилось, url)
-            updateCart(cartID, currentValue - 1, -1, url);
-        }
-    });
 
-    // Обработчик события для увеличения значения
-    $(document).on("click", ".increment", function () {
-        // Берем ссылку на контроллер django из атрибута data-cart-change-url
-        var url = $(this).data("cart-change-url");
-        // Берем id корзины из атрибута data-cart-id
-        var cartID = $(this).data("cart-id");
-        // Ищем ближайшеий input с количеством 
-        var $input = $(this).closest('.input-group').find('.number');
-        // Берем значение количества товара
-        var currentValue = parseInt($input.val());
-
-        $input.val(currentValue + 1);
 
         // Запускаем функцию определенную ниже
         // с аргументами (id карты, новое количество, количество уменьшилось или прибавилось, url)
-        updateCart(cartID, currentValue + 1, 1, url);
+        updateCart(cartID, currentValue, currentValue, url);
     });
-
+      
     function updateCart(cartID, quantity, change, url) {
         $.ajax({
             type: "POST",
@@ -174,10 +187,13 @@ $(document).ready(function () {
 
             },
             error: function (data) {
-                console.log("Ошибка при добавлении товара в корзину");
+                console.log("Помилка при додаванні товару в корзину");
             },
         });
     }
+    
+
+
 
     // Берем из разметки элемент по id - оповещения от django
     var notification = $('#notification');
@@ -211,3 +227,5 @@ $(document).ready(function () {
         }
     });
 });
+
+

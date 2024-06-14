@@ -1,38 +1,80 @@
 body {
-  background-image: url("../images/big-image.jpg");
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center center;
-  background-size: cover;
-  height: 100%;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1ddd7d;
+
 }
 
-.dropdown-toggle::after {
-  content: none;
+.product-card {
+  width: 250px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px;
+  transition: transform 0.3s;
 }
 
-.custom-shadow {
-  box-shadow: 5px 5px 25px 19px #000000;
+/* .product-card:hover {
+  transform: scale(1.05);
+} */
+
+.product-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
-.product_id {
-  color: gray;
-  font-size: 15px;
+.product-details {
+  padding: 20px;
+  text-align: center;
 }
 
-.badge.bg-warning.text-dark {
-  position: absolute;
-  top: 10px;
-  right: 5px;
-  z-index: 1;
-  padding: 5px 10px;
-  border-radius: 3px;
-  font-size: 1rem;
-  box-shadow: 2px 2px 15px 9px #000000;
+.product-name {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
 }
 
-.badge-banner {
-  top: 80%;
-  border-radius: 15px;
-  font-size: 0.7rem;
+.product-id {
+  font-size: 14px;
+  color: #15c8e7;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 14px;
+  font-weight: bold;
+  color: #26e43f; /* orange color */
+  margin-bottom: 10px;
+}
+
+.add-to-cart-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e44d26; /* orange color */
+  color: #fff;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-to-cart-button:hover {
+  background-color: #333;
+}
+
+
+input[type="number"] {
+	-moz-appearance: textfield;
+	-webkit-appearance: textfield;
+	appearance: textfield;
+}
+ 
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	display: none;
 }
