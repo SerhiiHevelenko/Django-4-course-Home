@@ -9,7 +9,7 @@ def index(request):
 
     context = {
         'title': 'ZamovHozky - Головна',
-        'content': '',
+        'content': 'Для замовлення перейдіть в "Каталог" та оберіть потрібний Вам товар',
     }
 
     return render(request, 'main/index.html', context)

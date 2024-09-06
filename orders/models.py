@@ -9,6 +9,8 @@ from carts.models import CartQueryset
 from django.db.models.signals import post_save
 from main.main import disable_for_loaddata
 
+
+
 class OrderitemQueryset(models.QuerySet):
     
     def total_price(self):

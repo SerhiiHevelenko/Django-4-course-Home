@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.postgres',
 
     "debug_toolbar",
+    "import_export",
 
     'main',
     'goods',

@@ -1,29 +1,34 @@
 from django.contrib import admin
+from orders.resources import OrderItemResourse, OrderResource
 
 from orders.models import Order, OrderItem
+
+from import_export.admin import ImportExportModelAdmin
 
 # admin.site.register(Order)
 # admin.site.register(OrderItem)
 
+
+
 class OrderItemTabulareAdmin(admin.TabularInline):
     model = OrderItem
-    fields = "product", "name", "price", "quantity"
+    fields = "product", "price", "quantity"
     search_fields = (
         "product",
         "name",
     )
     extra = 0
-
+    
 
 @admin.register(OrderItem)
-class OrderItemAdmin(admin.ModelAdmin):
+class OrderItemAdmin(ImportExportModelAdmin):
     list_display = "order", "product", "name", "price", "quantity", "total_price"
     search_fields = (
         "order",
         "product",
         "name",
     )
-
+    resource_class = OrderItemResourse
 
 class OrderTabulareAdmin(admin.TabularInline):
     model = Order
@@ -41,7 +46,7 @@ class OrderTabulareAdmin(admin.TabularInline):
 
 
 @admin.register(Order)
-class OrderAdmin(admin.ModelAdmin):
+class OrderAdmin(ImportExportModelAdmin):
     list_display = (
         "id",
         "user",
@@ -60,3 +65,5 @@ class OrderAdmin(admin.ModelAdmin):
         "user"
     )
     inlines = (OrderItemTabulareAdmin,)
+
+    resource_class = OrderResource
