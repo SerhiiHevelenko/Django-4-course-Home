@@ -12,7 +12,7 @@ from import_export.admin import ImportExportModelAdmin
 
 class OrderItemTabulareAdmin(admin.TabularInline):
     model = OrderItem
-    fields = "product", "price", "quantity"
+    fields = "product",  "price", "quantity", "total_price"
     search_fields = (
         "product",
         "name",
@@ -22,11 +22,16 @@ class OrderItemTabulareAdmin(admin.TabularInline):
 
 @admin.register(OrderItem)
 class OrderItemAdmin(ImportExportModelAdmin):
-    list_display = "order", "product", "name", "price", "quantity", "total_price"
+    list_display = "order", "name", "quantity", "price", "total_price"
     search_fields = (
         "order",
         "product",
         "name",
+    )
+    list_filter = (
+        "created_timestamp",
+        "order",
+
     )
     resource_class = OrderItemResourse
 

@@ -9,8 +9,9 @@ class Categories(models.Model):
     class Meta:
         db_table = 'category'
         verbose_name = 'Категорію'
-        verbose_name_plural = 'Категорїї'
-
+        verbose_name_plural = 'Категорії'
+        ordering = ("id",)
+        
     def __str__(self):
         return self.name
 

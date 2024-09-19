@@ -36,7 +36,8 @@ class Order(models.Model):
         db_table = "order"
         verbose_name = "Замовлення"
         verbose_name_plural = "Замовлення"
-    
+        ordering = ("id",)
+
     class OrderitemQueryset(models.QuerySet):
         
         def total_price(self):
@@ -59,7 +60,8 @@ class OrderItem(models.Model):
         db_table = "order_item"
         verbose_name = "Проданий товар"
         verbose_name_plural = "Продані товари"
-
+        ordering = ("id",)
+        
     objects = OrderitemQueryset.as_manager()
    
     def products_price(self):

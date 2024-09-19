@@ -44,7 +44,7 @@
         <h4 class="float-left"><strong>{{ carts.total_price }} грн</strong></h4>
     </div>
 </div>
-{% if carts and not orders%}
+{% if carts and not order%}
 <a class="btn btn-dark" href="{% url "orders:create_order" %}">
     Оформить замовлення
 </a>
